@@ -1,9 +1,12 @@
 import { IUser } from "../interfaces/IUser";
+import { Event } from "./Event";
+import { Sync } from "./Sync";
 
-type TCallback = () => void;
+const apiUrl = "http://localhost:3000";
 
 export class User {
-	eventsList: { [key: string]: TCallback[] } = {};
+	public events: Event = new Event();
+	public sync: Sync<IUser> = new Sync<IUser>(apiUrl);
 
 	constructor(private data: IUser) {}
 
@@ -13,11 +16,5 @@ export class User {
 
 	set(value: IUser): void {
 		Object.assign(this.data, value);
-	}
-
-	on(evtName: string, cb: TCallback): void {
-		const evtHandlers = this.eventsList[evtName] || [];
-		evtHandlers.push(cb);
-		this.eventsList[evtName] = evtHandlers;
 	}
 }

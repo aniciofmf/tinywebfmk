@@ -3,11 +3,17 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	"scripts": {},
+	"scripts": {
+		"start:db": "json-server -w db.json",
+		"start:parcel": "parcel index.html"
+	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"typescript": "^4.8.2"
+	},
+	"dependencies": {
+		"axios": "^0.27.2"
 	}
 }
